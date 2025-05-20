@@ -84,12 +84,15 @@
 			td:nth-of-type(4)::before { content: "Sensor"; }
 
 			.table-container {
-				overflow-x: auto,
-				overflow-y: auto,
-				max-width: 100%,
-				max-height: 400px,
-				border: 1px solid #ccc
+				overflow-y: auto;
+				max-height: 400px;
+				border: 1px solid #ccc;
+				box-shadow: 0 2px 8px rgba(0, 0 0, 0.05);
 			} 
+
+			.table-wrapper {
+				margin: 20px 0;
+			}
 		}
 
 
