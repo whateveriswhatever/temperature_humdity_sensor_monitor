@@ -3,11 +3,14 @@
 	ini_set("display_startup_errors", 1);
 	error_reporting(E_ALL);
 
-	$recorder = "./data/recorded_sensor_data.csv";
+	$recorder = "../data/recorded_sensor_data.csv";
 
-	$temperature = isset($_GET["temperature"]) ? trim($_GET["temperature"]) : null;
-	$humidity = isset($_GET["humidity"]) ? trim($_GET["humidity"]) : null;
-       	$sensor = isset($_GET["sensor"]) ? trim($_GET["sensor"]) : "default";	
+	$rawData = file_get_contents("php://input");
+	$data = json_decode($rawData, true);
+
+	$temperature = isset($data["temperature"]) ? trim($data["temperature"]) : null;
+	$humidity = isset($data["humidity"]) ? trim($data["humidity"]) : null;
+    $sensor = isset($data["sensor"]) ? trim($data["sensor"]) : "default";	
 
 	if ($temperature !== null && $humidity !== null && $sensor !== null) {
 		$timestamp = date("Y-m-d H:i:s");
